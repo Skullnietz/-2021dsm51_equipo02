@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/posts-screen.dart';
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Sanctum Authentication'),
       ),
-      body:Center(child: Text('Home Screen'),),
+      body:Center(child: Text('You are not logged in'),),
       drawer: Drawer(
         child: ListView(
           children: [
@@ -24,6 +25,12 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text('Posts'),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder:(context)=>PostsScreen()));
+              },
+            ),
+            ListTile(
+              title: Text('Login'),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginScreen()));
               },
             ),
           ],
