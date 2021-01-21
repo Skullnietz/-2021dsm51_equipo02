@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screens/home_screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/widgets/nav-drawer.dart';
 
 void main() {
   runApp(MyApp());
