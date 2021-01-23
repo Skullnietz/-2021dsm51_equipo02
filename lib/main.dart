@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/providers/auth.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/widgets/nav-drawer.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
+    
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
