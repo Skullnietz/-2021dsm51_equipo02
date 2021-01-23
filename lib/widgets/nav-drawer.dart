@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return ListView(
           children: [
             ListTile(
-              title: Text('Guizar Peña Carlos Enrique DSM51'),
+              title: Text(auth.user.name),
               
             ),
             ListTile(
