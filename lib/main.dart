@@ -14,7 +14,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     
@@ -41,6 +41,17 @@ class MyHomePage extends StatefulWidget{
 }
 
 class _MyHomePageState extends State<MyHomePage>{
+  final storage = new FlutterSecureStorage();
+
+  void _attemptAuthentication () async{
+    final key = await storage.read(key: 'auth');
+    Provider.of<Auth>(context, listen: false).attempt(key);
+  }
+  @override
+  void initState() {
+    _attemptAuthentication();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context){
     return Scaffold(
