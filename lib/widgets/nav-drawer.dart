@@ -29,9 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
                       title: Text('Log out'),
-                       onTap: (){
-                         //
-                       }
+                          onTap: (){
+                            Provider.of<Auth>(context,listen: false).logout();
+                          },
                          ),
           ],
         );
