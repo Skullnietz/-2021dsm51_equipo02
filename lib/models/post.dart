@@ -7,9 +7,7 @@ class Post {
   factory Post.fromJson(Map<String, dynamic>json){
     return Post(
       id: json['id'],
-      title: json['name'],
-      
-
+      title: json['title'],
     );
   }
 }

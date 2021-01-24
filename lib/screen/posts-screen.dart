@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/models/post.dart';
@@ -18,11 +17,16 @@ class PostsScreen extends StatefulWidget {
 
 class PostsState extends State<PostsScreen> {
    Future<List<Post>> getPosts() async {
-     Dio.Response response = await dio().get('user/posts');
+     Dio.Response response = await dio().get(
+       'user/posts',
+       options: Dio.Options(
+         headers: {'auth': true}
+       )
+       );
 
      List posts = json.decode(response.toString());
 
-     return posts.map((post)=>Post.fromJson(post)).toList();
+     return posts.map((post) => Post.fromJson(post)).toList();
 
    }
   @override
@@ -33,9 +37,8 @@ class PostsState extends State<PostsScreen> {
          ),
          body: Center(
            child: FutureBuilder<List<Post>>(
-
              future: getPosts(),
-             builder: (context, snapshot){
+             builder: (context, snapshot) {
                if(snapshot.hasData){
                  return ListView.builder(
                    itemCount: snapshot.data.length,
