@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEspecialidadesMedicasTable extends Migration
+class CreateEstudiosMedicosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateEspecialidadesMedicasTable extends Migration
      */
     public function up()
     {
-        Schema::create('especialidades_medicas', function (Blueprint $table) {
+        Schema::create('estudios_medicos', function (Blueprint $table) {
             $table->id();
-            $table->string('estudio', 45);
+            $table->string(45);
+            $table->decimal('costo', 100,2);
 
         });
     }
@@ -27,6 +28,6 @@ class CreateEspecialidadesMedicasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('especialidades_medicas');
+        Schema::dropIfExists('estudios_medicos');
     }
 }
