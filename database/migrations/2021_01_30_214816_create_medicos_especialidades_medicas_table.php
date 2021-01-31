@@ -14,7 +14,6 @@ class CreateMedicosEspecialidadesMedicasTable extends Migration
     public function up()
     {
         Schema::create('medicos_especialidades_medicas', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInterger('medico_id')->nullable();
             $table->unsignedBigInterger('especialidades_medicas_id')->nullable();
 
