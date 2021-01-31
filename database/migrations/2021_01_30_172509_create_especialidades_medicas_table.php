@@ -15,7 +15,8 @@ class CreateEspecialidadesMedicasTable extends Migration
     {
         Schema::create('especialidades_medicas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string(45);
+            
         });
     }
 
