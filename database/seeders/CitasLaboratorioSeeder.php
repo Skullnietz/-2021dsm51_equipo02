@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CitasLaboratorioSeeder extends Seeder
 {
@@ -13,6 +14,28 @@ class CitasLaboratorioSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('citas_laboratorios')->insert([
+            ['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+            ,['fecha_hora' => '', 'medico_id' => '', 'paciente_id' => '', 'laboratorista_id' => '']
+
+        ]);
     }
 }

@@ -18,11 +18,14 @@ class CreatePacientesMedicosLaboratoristasTable extends Migration
             $table->string('nombre',30);
             $table->string('primer_apellido',30);
             $table->string('segundo_apellido',30)->nullable();
+            $table->integer('edad');
             $table->date('fecha_nacimiento');
             $table->enum('sexo',['Femenino','Masculino','Indefinido']);
-            $table->enum('sexo',['medico','paciente','laboratorista']);
+            $table->enum('perfil',['Medico','Paciente','Laboratorista']);
             $table->string('correo_electronico',45);
             $table->string('contraseña',12);
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

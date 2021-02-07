@@ -14,11 +14,11 @@ class CreateCitasLaboratorioEstudiosMedicosTable extends Migration
     public function up()
     {
         Schema::create('citas_laboratorio_estudios_medicos', function (Blueprint $table) {
-            $table->unsignedBigInterger('citas_laboratorio_id')->nullable();
-            $table->unsignedBigInterger('estudios_medicos_id')->nullable();
+            $table->unsignedBigInteger('citas_laboratorio_id')->nullable();
+            $table->unsignedBigInteger('estudios_medicos_id')->nullable();
 
             $table->foreign('citas_laboratorio_id')->references('id')->on('estudios_medicos')->onDelete('set null');
-            $table->foreign('estudios_medicos_id')->references('id')->on('citas_laboratorio')->onDelete('set null');
+            $table->foreign('estudios_medicos_id')->references('id')->on('citas_laboratorios')->onDelete('set null');
 
 
         });

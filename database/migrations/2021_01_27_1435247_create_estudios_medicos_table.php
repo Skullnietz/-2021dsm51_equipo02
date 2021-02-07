@@ -15,8 +15,9 @@ class CreateEstudiosMedicosTable extends Migration
     {
         Schema::create('estudios_medicos', function (Blueprint $table) {
             $table->id();
-            $table->string(45);
-            $table->decimal('costo', 100,2);
+            $table->string('estudio',45);
+            $table->decimal('costo', 10,2);
+            
 
         });
     }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class MedicosEspecialidadesMedicasSeeder extends Seeder
 {
@@ -13,6 +14,29 @@ class MedicosEspecialidadesMedicasSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('medicos_especialidades_medicas')->insert([
+            ['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            ,['medico_id'=>'','especialidades_medicas_id'=>'']
+            
+
+        ]);
     }
 }
