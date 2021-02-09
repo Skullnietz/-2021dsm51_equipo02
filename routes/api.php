@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\TokenController;
 use App\Http\Controllers\Api\UsersController;
+use App\Http\Controllers\Api\EstudiosMedicosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::delete('/auth/token', [TokenController::class, 'destroy']);
 */
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('usuarios', UsersController::class)->except(['create', 'edit']);
+    Route::apiResource('estudios_medicos', EstudiosMedicosController::class)->except(['create', 'edit']);
+
 });
 
 Route::post('/auth/token', [TokenController::class, 'store']);

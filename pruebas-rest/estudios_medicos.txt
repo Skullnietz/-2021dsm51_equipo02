@@ -1,0 +1,14 @@
+##Obtener un token
+POST http://127.0.0.1:8000/api/auth/token HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email":"carlos.guizarp@gmail.com"
+    , "password":"1234567"
+}
+
+GET http://127.0.0.1:8000/api/estudios_medicos HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|KkwCpMM0d0JOJzlcrmniTyDiNzPmBcHDx3BWvEbL
