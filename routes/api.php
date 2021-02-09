@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\TokenController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\EstudiosMedicosController;
+use App\Http\Controllers\Api\EspecialidadesMedicasController;
 
 
 /*
@@ -31,8 +32,10 @@ Route::middleware('auth:sanctum')->get('/user/posts', function (Request $request
 Route::delete('/auth/token', [TokenController::class, 'destroy']);
 */
 Route::middleware('auth:sanctum')->group(function () {
+
     Route::apiResource('usuarios', UsersController::class)->except(['create', 'edit']);
     Route::apiResource('estudios_medicos', EstudiosMedicosController::class)->except(['create', 'edit']);
+    Route::apiResource('especialidades_medicas', EspecialidadesMedicasController::class)->except(['create', 'edit']);
 
 });
 
