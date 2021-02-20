@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget{
   MyHomePage({Key key, this.title}) : super(key: key);
+  
 
   final String title;
 
@@ -39,6 +40,14 @@ class MyHomePage extends StatefulWidget{
 }
 
 class _MyHomePageState extends State<MyHomePage>{
+  List<User> _users=[ 
+    User("Jose","Galdamez","Perez","Medico"),
+    User("Carlos","Guizar","Peña","Administrador"),
+    User("Jairo","Padilla","Nava", "Laboratorista"),
+    User("Aurora","Gonzales","Hernandez","Paciente")
+  ];
+
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -51,7 +60,25 @@ class _MyHomePageState extends State<MyHomePage>{
         child: Consumer<Auth>(
           builder: (context, auth, child){
             if (auth.authenticated){
-              return Text('You are logged in');
+              return ListView.builder(
+        itemCount: _users.length,
+        itemBuilder: (context,index){
+          return ListTile(
+            onLongPress:(){
+              this._borrarUser(context,_users[index]);
+            },
+            title:Text(_users[index].name+' '+_users[index].segundo_apellido +' '+_users[index].primer_apellido),
+            subtitle:Text(_users[index].perfil),
+            leading: CircleAvatar(
+              child: Text(_users[index].name.substring(0,1)),
+            ),
+            trailing: Icon(Icons.arrow_forward_ios),
+          );
+
+        }
+      );
+
+              
             }else{
               return Text('You are not logged in');
 
@@ -60,5 +87,42 @@ class _MyHomePageState extends State<MyHomePage>{
         )
       ),
     );
+  }
+  _borrarUser(context, User user){
+    showDialog(
+      context: context,
+      builder: ( _ ) => AlertDialog(
+        title: Text("Eliminar registro"),
+        content: Text("¿Esta seguro de querer eliminar a "+ user.name + '?'),
+        actions: [
+          FlatButton(onPressed:(){
+            Navigator.pop(context);
+          },child: Text("Cancelar")),
+          FlatButton(onPressed: (){
+            print(user.name);
+            this.setState(() {
+              this._users.remove(user);
+            });
+            
+            Navigator.pop(context);
+          },child:Text("Borrar", style: TextStyle(color: Colors.red),)),
+        ],
+      )
+      );
+  }
+}
+
+class User{
+  String name;
+  String primer_apellido;
+  String segundo_apellido;
+  String perfil;
+  
+
+  User(name, primer_apellido, segundo_apellido, perfil){
+    this.name = name;
+    this.primer_apellido= primer_apellido;
+    this.segundo_apellido = segundo_apellido;
+    this.perfil = perfil;
   }
 }
