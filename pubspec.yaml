@@ -37,6 +37,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
+  flutter_svg: 0.18.1
 
 dev_dependencies:
   flutter_test:
@@ -51,11 +52,30 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+ uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+ assets:
+  - assets/images/quimicasanguinea21.png.
+  - assets/images/quimicasanguinea3.png
+  - assets/images/electrocardiograma.png
+  - assets/images/proyecciontorax.png
+  - assets/images/pruebaantigeno.png
+  - assets/images/perfilhepatico.png
+  - assets/images/perfilreumatico.png
+  - assets/images/perfiltirode.png
+  - assets/images/urianalisis.png
+  - assets/images/proyeccionmano.png
+  - assets/images/perfillipidos.png
+  - assets/images/ego.png
+  - assets/images/pcr.png
+  - assets/images/iggigm.png
+  - assets/images/espiro.png
+  - assets/images/glucosangre.png
+  - assets/images/pdrogas3.png
+  - assets/images/bacteriologia.png
+  - assets/images/analisisagua.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
