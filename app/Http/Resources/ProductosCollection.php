@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class EstudiosMedicosCollection extends ResourceCollection
+class ProductosCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -15,10 +15,11 @@ class EstudiosMedicosCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
+
             'data' => $this->collection,
             'links' => [
                 'self' => 'link-value',
             ],
         ];
     }
-} 
+}

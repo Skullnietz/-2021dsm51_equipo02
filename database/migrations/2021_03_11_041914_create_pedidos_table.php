@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstudiosMedicosTable extends Migration
+class CreatePedidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateEstudiosMedicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('estudios_medicos', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->string('estudio',45);
-            $table->decimal('costo', 10,2);
-            $table->string('img');
-
-
+            $table->dateTime('fecha_de_realizacion');
+            $table->dateTime('fecha_estimada');
+            $table->dateTime('fecha_entrega');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateEstudiosMedicosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estudios_medicos');
+        Schema::dropIfExists('pedidos');
     }
 }

@@ -20,13 +20,13 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Carlos'
                 , 'primer_apellido' => 'Guizar'
-                , 'segundo_apellido' => 'Peña'
+                , 'segundo_apellido' => 'Pena'
                 , 'fecha_nacimiento' => '2000-01-24'
                 , 'sexo' => 'Masculino'
-                , 'perfil' => 'Laboratorista'
+                , 'perfil' => 'Administrador'
                 , 'estatus' => 'Activo'
-                , 'email' => 'carlos.guizarp@gmail.com'
-                , 'password' => bcrypt('1234567')
+                , 'email' => 'al221910878@gmail.com'
+                , 'password' => bcrypt('password')
                 , 'created_at' => $now
                 , 'updated_at' => $now
             ],
@@ -36,10 +36,10 @@ class UsersTableSeeder extends Seeder
                 , 'segundo_apellido' => 'Nava'
                 , 'fecha_nacimiento' => '1994-01-25'
                 , 'sexo' => 'Masculino'
-                , 'perfil' => 'Medico'
+                , 'perfil' => 'Empleado'
                 , 'estatus' => 'Activo'
                 , 'email' => 'padillanava@gmail.com'
-                , 'password' => bcrypt('jairop')
+                , 'password' => bcrypt('password')
                 , 'created_at' => $now
                 , 'updated_at' => $now
             ],
@@ -49,10 +49,10 @@ class UsersTableSeeder extends Seeder
                 , 'segundo_apellido' => 'Hernandez'
                 , 'fecha_nacimiento' => '2002-01-12'
                 , 'sexo' => 'Masculino'
-                , 'perfil' => 'Medico'
+                , 'perfil' => 'Cliente'
                 , 'estatus' => 'Activo'
                 , 'email' => 'auroguads@gmail.com'
-                , 'password' => bcrypt('auroras')
+                , 'password' => bcrypt('password')
                 , 'created_at' => $now
                 , 'updated_at' => $now
             ],

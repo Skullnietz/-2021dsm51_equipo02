@@ -1,23 +1,32 @@
 <?php
 
-namespace App\Http\Controllers\Api;
-
+namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Resources\EstudiosMedicosResource;
-use App\Http\Resources\EstudiosMedicosCollection;
-use App\Models\Estudios_medicos;
+use App\Http\Resources\ProductosResource;
+use App\Http\Resources\ProductosCollection;
+use App\Models\Producto;
 
-class EstudiosMedicosController extends Controller
+
+class ProductosController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new EstudiosMedicosCollection(Estudios_medicos::all());
+        return new ProductosCollection(Producto::all());
+        // $estudios_medicos = Estudios_medicos::select('id','estudios','costo')
+        // ->when($request->estudios, function($query) use ($request){
+        //     return $query->where('estudios', $request->estudios);
+        // })
+        // ->when($request->costo, function($query) use ($request){
+        //     return $query->where('costo', $request->costo);
+        // })
+        // ->get();
+        // return response()->json($estudios_medicos);
     }
 
     /**

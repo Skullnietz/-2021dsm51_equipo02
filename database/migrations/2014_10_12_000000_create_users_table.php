@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
            // $table->integer('edad');
             $table->date('fecha_nacimiento');
             $table->enum('sexo',['Femenino','Masculino','Indefinido'])->comment('Sexo');
-            $table->enum('perfil',['Medico','Paciente','Laboratorista'])->comment('Perfil');
+            $table->enum('perfil',['Administrador','Empleado','Cliente'])->comment('Perfil');
             $table->enum('estatus',['Activo','Inactivo']);
             $table->rememberToken();
             $table->timestamps();

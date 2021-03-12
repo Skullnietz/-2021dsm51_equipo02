@@ -1,6 +1,7 @@
 <?php
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\ProductosResource;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -22,6 +23,7 @@ Route::get('/', function () {
 Route::get('/users', function () {
     return UserResource::collection(User::all());
 });
+
 
 Route::get('/user/{id}', function ($id) {
     return new UserResource(User::findOrFail($id));

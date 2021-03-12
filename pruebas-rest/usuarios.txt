@@ -4,20 +4,21 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "email":"carlos.guizarp@gmail.com"
-    , "password":"1234567"
+    "email":"padillanava@gmail.com"
+    , "password":"password"
 }
 
 GET http://127.0.0.1:8000/api/usuarios HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 1|FL30dhRbEGxgW2sfJjzLGeRC8MGBeOMklyJ5mJVB
+Authorization: Bearer 1|n7jMj3ZqXAeBaxMPMS7fTvEE2Mn5kMkHBtvKbRpP
+
 
 ## Crear usuario
 POST http://127.0.0.1:8000/api/usuarios HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 2|Gyw8X0Dpdht3lcmdxBscgTokzRPTOiZYL5FrceQx
+Authorization: Bearer 10|UTRLDKz03CjOnEJwWKpzeGdQi8YVWIQPYaTVLSIj
 
 {
 "name":"Benito Pablo"

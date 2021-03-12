@@ -1,0 +1,21 @@
+##Obtener un token
+POST http://127.0.0.1:8000/api/auth/token HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email":"padillanava@gmail.com"
+    , "password":"password"
+}
+
+##Recibir todos los registros
+GET http://127.0.0.1:8000/api/productos HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 3|KjydTtlwwKwMyxlemwkSSAuB6ka7KqFlJ12e6mAQ
+
+##Obtener producto
+GET http://127.0.0.1:8000/api/productos?producto=puertaautomatica&costo=300 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization:

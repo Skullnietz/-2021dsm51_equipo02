@@ -17,7 +17,7 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'primer_apellido' => $this->primer_apelldo,
+            'primer_apellido' => $this->primer_apellido,
             'segundo_apellido' => $this->segundo_apellido,
             'fecha_nacimiento' => $this->fecha_nacimiento,
             'sexo' => $this->sexo,
@@ -27,6 +27,6 @@ class UserResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
-        
+
     }
 }
