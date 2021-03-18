@@ -17,10 +17,12 @@ class ProductosResource extends JsonResource
         return[
 
             'id'=> $this->id,
-            'producto'=>$this->estudio,
+            'producto'=>$this->producto,
             'costo'=>$this->costo,
             'img'=>$this->img,
             'descripcion'=>$this->descripcion,
+            'categoria'=>$this->categoria,
+            'existencias'=>$this->existencias,
 
         ];
     }

@@ -12,7 +12,7 @@ Accept: application/json
 GET http://127.0.0.1:8000/api/productos HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 3|KjydTtlwwKwMyxlemwkSSAuB6ka7KqFlJ12e6mAQ
+Authorization: Bearer 2|yxb90AUm7mKa5pMGCQXW0y9civWmoRVBn2dud2J8
 
 ##Obtener producto
 GET http://127.0.0.1:8000/api/productos?producto=puertaautomatica&costo=300 HTTP/1.1

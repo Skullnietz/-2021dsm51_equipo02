@@ -23,14 +23,14 @@ Route::middleware('auth:sanctum')->get('/auth/user', function (Request $request)
     return $request->user();
 });
 
-/*
+
 Route::middleware('auth:sanctum')->get('/user/posts', function (Request $request) {
     return $request->user()->posts;
 });
 
 
 Route::delete('/auth/token', [TokenController::class, 'destroy']);
-*/
+
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('usuarios', UsersController::class)->except(['create', 'edit']);
