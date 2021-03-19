@@ -40,7 +40,7 @@
                     <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>
                 </form>
                 <div class="col-12 forgot">
-                    <a href="#">Registrate</a>
+                    <a href="{{route("registro")}}">Registrate</a>
                 </div>
             </div>
         </div>

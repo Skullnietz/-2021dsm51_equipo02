@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator;
 use App\Http\Resources\ProductosResource;
 use App\Http\Resources\ProductosCollection;
 use App\Models\Producto;
@@ -42,11 +43,9 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge([
-            'img' => Producto::generaImagen()
-        ]);
+    
         $request->validate(Producto::reglas());
-        return response()->json(Producto::create($request->all()));
+       return response()->json(Producto::create($request->all()));
     }
 
     /**
@@ -81,9 +80,7 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->merge([
-            'img' => Producto::generaImagen()
-        ]);
+
         $request->validate(Producto::reglas());
         $producto = Producto::findOrFail($id);
         $producto->update($request->all());

@@ -27,6 +27,7 @@ Route::name('Iniciosesion')->get('/Iniciosesion', function () {return view('Inic
 Route::name('productos')->get('/productos', function () {return view('productos');});
 Route::name('userlist')->get('/userlist', function () {return view('userlist');});
 Route::name('carrito')->get('/carrito', function () {return view('carrito');});
+Route::name('registro')->get('/registro', function () {return view('registro');});
 Route::name('pedidos')->get('/pedidos', function () {return view('pedidos');});
 Route::post('Iniciosesion', function (){
     $credentials = request()->only('email','password');
@@ -49,3 +50,6 @@ Route::get('/users', function () {
 Route::get('/user/{id}', function ($id) {
     return new UserResource(User::findOrFail($id));
 });
+
+
+Route::post('users', [UsersController::class, 'store'])->name('users.store');

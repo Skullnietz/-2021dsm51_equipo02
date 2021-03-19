@@ -37,7 +37,7 @@ class Producto extends Model
             , 'existencias' => 'existencias'
             , 'producto' => 'producto'
             , 'descripcion' => 'descripción'
-            , 'img' => 'fotografía'
+            , 'img' => 'img'
         ];
     }
 
