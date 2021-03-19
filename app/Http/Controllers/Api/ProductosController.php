@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProductosResource;
@@ -8,25 +8,20 @@ use App\Http\Resources\ProductosCollection;
 use App\Models\Producto;
 
 
+
 class ProductosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
-        return new ProductosCollection(Producto::all());
-        // $estudios_medicos = Estudios_medicos::select('id','estudios','costo')
-        // ->when($request->estudios, function($query) use ($request){
-        //     return $query->where('estudios', $request->estudios);
-        // })
-        // ->when($request->costo, function($query) use ($request){
-        //     return $query->where('costo', $request->costo);
-        // })
-        // ->get();
-        // return response()->json($estudios_medicos);
+        $productos = Producto::select('id', 'categoria', 'producto', 'costo', 'existencias', 'descripcion', 'img')
+            ->when($request->categoria, function($query) use ($request) {
+                return $query->where('categoria', $request->categoria);
+            })
+            ->when($request->ids, function($query) use ($request) {
+                return $query->whereIn('id', $request->ids);
+            })
+            ->get();
+        return response()->json($productos->toArray());
     }
 
     /**
@@ -47,7 +42,11 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->merge([
+            'img' => Producto::generaImagen()
+        ]);
+        $request->validate(Producto::reglas());
+        return response()->json(Producto::create($request->all()));
     }
 
     /**
@@ -70,6 +69,7 @@ class ProductosController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -81,7 +81,13 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->merge([
+            'img' => Producto::generaImagen()
+        ]);
+        $request->validate(Producto::reglas());
+        $producto = Producto::findOrFail($id);
+        $producto->update($request->all());
+        return response()->json($producto);
     }
 
     /**
@@ -94,4 +100,5 @@ class ProductosController extends Controller
     {
         //
     }
+
 }
