@@ -38,7 +38,13 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+
+        User::create($request->only('email', 'name', 'sexo', 'perfil', 'primer_apellido','segundo_apellido','fecha_nacimiento')
+        + [
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        return redirect()->route('Iniciosesion');
     }
 
     /**

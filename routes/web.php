@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Api\UsersController;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
