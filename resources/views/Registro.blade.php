@@ -182,26 +182,35 @@
               <label for="firstName" class="form-label">Nombre(s)</label>
               <input type="text" class="form-control" id="nombre" name="name" placeholder="Tu nombre" value="" required="">
 
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
+              @error('name')
+              <br>
+              <small style="color:#F00";>*{{$message}}</small>
+              <br>
+              @enderror
             </div>
+
 
             <div class="col">
               <label for="lastName" class="form-label">Primer Apellido</label>
               <input type="text" class="form-control" id="app" name="primer_apellido" placeholder="Tu Primer Apellido" value="" required="">
               <span id="sapp" class="sapp">
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
+                @error('primer_apellido')
+                <br>
+                <small style="color:#F00";>*{{$message}}</small>
+                <br>
+                @enderror
+
             </div>
                         <div class="col">
               <label for="lastName" class="form-label">Segundo Apellido<span class="text-muted"> (Opcional)</span></label>
               <input type="text" class="form-control" id="apm" name="segundo_apellido" placeholder="Tu Segundo Apellido" value="" required="">
               <span id="sapm" class="sapm">
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
+                @error('segundo_apellido')
+                <br>
+                <small style="color:#F00";>*{{$message}}</small>
+                <br>
+                @enderror
+
             </div>
 
 
@@ -211,6 +220,11 @@
               <label for="email" class="form-label" >Email </label>
               <input type="email" class="form-control" id="mail" name="email" placeholder="correo@dominio.com">
               <span id="smail" class="smail">
+                @error('email')
+                <br>
+                <small style="color:#F00";>*{{$message}}</small>
+                <br>
+                @enderror
 
 
             </div>
@@ -221,6 +235,11 @@
               <span id="spass1" class="spass1">
               <b id="cantidad"></b>
               <b id="seguro"></b>
+              @error('password')
+                <br>
+                <small style="color:#F00";>*{{$message}}</small>
+                <br>
+                @enderror
 
             </div>
 
@@ -229,6 +248,7 @@
               <input type="text" class="form-control" id="pass2" placeholder="contraseña" onkeyup="cantidad2(this);">
               <span id="spass2" class="spass2">
               <img src="{{ asset('Imagenes/paloma.gif') }}" id="correcto" width="20">
+
             </div>
 
             <div class="col-md-6">
@@ -245,6 +265,7 @@
                 <input id="indefinido" name="sexo" type="radio" class="form-check-input" value="Indefinido" required="">
                 <label class="form-check-label" for="Indefinido">Indefinido</label>
               </div>
+
             </div>
 
             <div class="col-md-6">
@@ -254,9 +275,12 @@
                 <option value="Empleado">Empleado</option>
                 <option value="Cliente">Usuario</option>
               </select>
-              <div class="invalid-feedback">
-                Ingrese una opcion.
-              </div>
+              @error('perfil')
+                <br>
+                <small style="color:#F00";>*{{$message}}</small>
+                <br>
+                @enderror
+
             </div>
 
             <div class="col-md-12">
@@ -267,6 +291,11 @@
                   <input class="form-control" id="fn" name="fecha_nacimiento" type="date" value="" >
                   <span id="sfecha" class="sfecha">
                 </div>
+                @error('fecha_nacimiento')
+                <br>
+                <small style="color:#F00";>*{{$message}}</small>
+                <br>
+                @enderror
             </div>
 
 

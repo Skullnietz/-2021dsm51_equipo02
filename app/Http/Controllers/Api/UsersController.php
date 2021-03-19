@@ -38,6 +38,15 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'primer_apellido' => 'required',
+            'email' => 'required',
+            'perfil' => 'required',
+            'fecha_nacimiento' => 'required',
+            'password' => 'required',
+
+        ]);
 
         User::create($request->only('email', 'name', 'sexo', 'perfil', 'primer_apellido','segundo_apellido','fecha_nacimiento')
         + [
@@ -55,7 +64,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

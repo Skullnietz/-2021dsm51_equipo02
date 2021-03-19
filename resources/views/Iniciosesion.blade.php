@@ -36,7 +36,7 @@
                             <input name="password" type="password" class="form-control" placeholder="Contraseña">
                         </label>
                     </div>
-                    <input type="checkbox">
+
                     <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>
                 </form>
                 <div class="col-12 forgot">

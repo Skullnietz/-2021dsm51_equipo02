@@ -67,9 +67,9 @@
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-outline-success me-5 " type="submit">Buscar</button>
           @guest
-          <a class="btn btn-outline-info " href="{{route("Iniciosesion")}}">Ingresar</a>
+          <a class="btn btn-outline-info me-2 " href="{{route("Iniciosesion")}}">Ingresar</a>
           @else
-          <a class="btn btn-outline-info me-2 " href="{{route("Iniciosesion")}}">Regresar</a>
+          <a class="btn btn-outline-info " href="{{route("productos")}}">Regresar</a>
           <a class="btn btn-outline-danger " href="#">Salir</a>
           @endguest
         </form>
@@ -94,9 +94,10 @@
           <div class="carousel-caption text-start">
               @guest
             <p><a class="btn btn-lg btn-primary" href="{{route("Iniciosesion")}}">Inicia Sesion</a></p>
-            @else
-            <p><a class="btn btn-lg btn-primary" href="{{route("Iniciosesion")}}">Regresar</a></p>
-            @endguest
+             @else
+             <p><a class="btn btn-lg btn-primary" href="{{route("productos")}}">Regresar</a></p>
+             @endguest
+
           </div>
         </div>
       </div>
