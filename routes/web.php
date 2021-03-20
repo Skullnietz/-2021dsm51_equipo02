@@ -43,6 +43,7 @@ Route::post('Iniciosesion', function (){
 
 Route::view('dashboard', 'dashboard')->middleware('auth');
 
+Route::get('user/logout', [UsersController::class, 'logout'])->name('user.logout');
 
 Route::get('/users', function () {
     return UserResource::collection(User::all());

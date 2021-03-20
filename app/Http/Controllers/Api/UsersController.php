@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 
 class UsersController extends Controller
@@ -56,6 +58,12 @@ class UsersController extends Controller
         return redirect()->route('Iniciosesion');
     }
 
+    public function logout(Request $request){
+        session()->flush();
+        session()->forget('id');
+        return redirect()->route('inicio');
+
+    }
     /**
      * Display the specified resource.
      *

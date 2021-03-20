@@ -29,12 +29,22 @@
                         <label>
                             <input name="email" type="email" class="form-control" placeholder="Correo electronico">
                         </label>
+                        @error('email')
+                <br>
+                <small style="color:#F00";>*{{$message}}</small>
+                <br>
+                @enderror
 
                     </div>
                     <div class="form-group" id="contrasena-group">
                         <label>
                             <input name="password" type="password" class="form-control" placeholder="Contraseña">
                         </label>
+                        @error('password')
+                <br>
+                <small style="color:#F00";>*{{$message}}</small>
+                <br>
+                @enderror
                     </div>
 
                     <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>
