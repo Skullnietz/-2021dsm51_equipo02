@@ -3,15 +3,13 @@
 Usuarios
 @endsection
 @section('content')
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Tabla de Usuarios</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
       </div>
-      <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-        This week
-      </button>
+
     </div>
   </div>
 
@@ -23,128 +21,42 @@ Usuarios
       <thead>
         <tr>
           <th>ID</th>
+          <th>Imagen</th>
           <th>Perfil</th>
           <th>Nombre</th>
           <th>E-mail</th>
-          <th>Contraseña</th>
           <th>Sexo</th>
-          <th>Edad</th>
-          <th>Opciones</th>
+          <th>Fecha Nacimiento</th>
+          <th>Eliminar</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
+        @foreach($users as $user)
         <tr>
-          <td>1,001</td>
-          <td>random</td>
-          <td>data</td>
-          <td>placeholder</td>
-          <td>text</td>
+
+          <td>{{$user->id}}</td>
+          <td><img src="Imagenes/avatar.png" alt="img-avatar" width=50></td>
+          <td>{{$user->perfil}}</td>
+          <td>{{$user->name}} {{$user->primer_apellido}} {{$user->segundo_apellido}}</td>
+          <td>{{$user->email}}</td>
+          <td>{{$user->sexo}}</td>
+          <td>{{$user->fecha_nacimiento}}</td>
+          <form action="{{route('users.destroy',$user)}}" method="post">
+            @csrf
+            @method('delete')
+          <td>
+            <button type="submit" class="btn btn-round"><i class="fas fa-trash"></i></button>
+          </td>
+          </form>
+          <td>
+            <button class="btn btn-round"><i class="fas fa-edit"></i></button>
+          </td>
+
+
         </tr>
-        <tr>
-          <td>1,002</td>
-          <td>placeholder</td>
-          <td>irrelevant</td>
-          <td>visual</td>
-          <td>layout</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>data</td>
-          <td>rich</td>
-          <td>dashboard</td>
-          <td>tabular</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>information</td>
-          <td>placeholder</td>
-          <td>illustrative</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,004</td>
-          <td>text</td>
-          <td>random</td>
-          <td>layout</td>
-          <td>dashboard</td>
-        </tr>
-        <tr>
-          <td>1,005</td>
-          <td>dashboard</td>
-          <td>irrelevant</td>
-          <td>text</td>
-          <td>placeholder</td>
-        </tr>
-        <tr>
-          <td>1,006</td>
-          <td>dashboard</td>
-          <td>illustrative</td>
-          <td>rich</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,007</td>
-          <td>placeholder</td>
-          <td>tabular</td>
-          <td>information</td>
-          <td>irrelevant</td>
-        </tr>
-        <tr>
-          <td>1,008</td>
-          <td>random</td>
-          <td>data</td>
-          <td>placeholder</td>
-          <td>text</td>
-        </tr>
-        <tr>
-          <td>1,009</td>
-          <td>placeholder</td>
-          <td>irrelevant</td>
-          <td>visual</td>
-          <td>layout</td>
-        </tr>
-        <tr>
-          <td>1,010</td>
-          <td>data</td>
-          <td>rich</td>
-          <td>dashboard</td>
-          <td>tabular</td>
-        </tr>
-        <tr>
-          <td>1,011</td>
-          <td>information</td>
-          <td>placeholder</td>
-          <td>illustrative</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,012</td>
-          <td>text</td>
-          <td>placeholder</td>
-          <td>layout</td>
-          <td>dashboard</td>
-        </tr>
-        <tr>
-          <td>1,013</td>
-          <td>dashboard</td>
-          <td>irrelevant</td>
-          <td>text</td>
-          <td>visual</td>
-        </tr>
-        <tr>
-          <td>1,014</td>
-          <td>dashboard</td>
-          <td>illustrative</td>
-          <td>rich</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,015</td>
-          <td>random</td>
-          <td>tabular</td>
-          <td>information</td>
-          <td>text</td>
-        </tr>
+        @endforeach
+
       </tbody>
     </table>
   </div>

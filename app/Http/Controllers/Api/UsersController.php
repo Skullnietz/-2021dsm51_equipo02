@@ -8,7 +8,7 @@ use App\Http\Resources\UserCollection;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -19,7 +19,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return new UserCollection(User::all());
+        $users = User::all();
+        return view('userlist',compact('users'));
+        //return new UserCollection(User::all());
     }
 
     /**
@@ -93,9 +95,20 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user )
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'primer_apellido' => 'required',
+            'email' => 'required',
+            'perfil' => 'required',
+            'fecha_nacimiento' => 'required',
+            'password' => 'required',
+
+        ]);
+        $user->update($request->all());
+        return redirect()->route('users.index');
+
     }
 
     /**
@@ -104,8 +117,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }

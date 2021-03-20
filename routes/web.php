@@ -27,7 +27,7 @@ Route::name('Iniciosesion')->get('/Iniciosesion', function () {return view('Inic
 Route::name('miusuario')->get('/miusuario', function () {return view('miusuario');});
 Route::name('Inventario')->get('/Inventario', function () {return view('Inventario');});
 Route::name('productos')->get('/productos', function () {return view('productos');});
-Route::name('userlist')->get('/userlist', function () {return view('userlist');});
+//Route::name('userlist')->get('/userlist', function () {return view('userlist');});
 Route::name('carrito')->get('/carrito', function () {return view('carrito');});
 Route::name('registro')->get('/registro', function () {return view('registro');});
 Route::name('pedidos')->get('/pedidos', function () {return view('pedidos');});
@@ -56,3 +56,7 @@ Route::get('/user/{id}', function ($id) {
 
 
 Route::post('users', [UsersController::class, 'store'])->name('users.store');
+Route::get('userlist', [UsersController::class, 'index'])->name('users.index');
+Route::get('users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
+Route::put('users/{user}', [UsersController::class, 'update'])->name('users.update');
+Route::delete('users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
