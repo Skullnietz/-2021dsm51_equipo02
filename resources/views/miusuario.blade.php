@@ -278,7 +278,7 @@ body {
                     <li style="color:#00F";>{{auth()->user()->updated_at }}</li>
 
                 </ul>
-                <button class="w-100 btn btn-primary btn-lg" ><i class="fas fa-tools"></i> Editar Mi Perfil</button>
+                <a class="w-100 btn btn-primary btn-lg" href="{{route('editarusu')}}" ><i class="fas fa-tools"></i> Editar Mi Perfil</a>
             </div>
 
         </div>

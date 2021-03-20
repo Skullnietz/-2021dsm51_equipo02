@@ -1,3 +1,8 @@
+@extends('dashboard')
+@section('title')
+Editar usuario
+@endsection
+@section('content')
 <!DOCTYPE html>
 <!-- saved from url=(0052)https://getbootstrap.com/docs/5.0/examples/checkout/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -167,9 +172,8 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="Imagenes/logo.png" alt="" width="200" height="200" href="{{route('inicio')}}">
-      <h2>Registro de usuario</h2>
-      <p class="lead">Bienvenido al formulario de registro Huginn&Meninn, aqui podra crear su usuario para acceder a la plataforma.</p>
+      <h2>Editar usuario</h2>
+
     </div>
 
 
@@ -180,7 +184,7 @@
           <div class="row g-3">
             <div class="col">
               <label for="firstName" class="form-label">Nombre(s)</label>
-              <input type="text" class="form-control" id="nombre" name="name" placeholder="Tu nombre" value="" required="">
+              <input type="text" class="form-control" id="nombre" name="name" placeholder="Tu nombre" value="{{auth()->user()->name }}" required="">
 
               @error('name')
               <br>
@@ -192,7 +196,7 @@
 
             <div class="col">
               <label for="lastName" class="form-label">Primer Apellido</label>
-              <input type="text" class="form-control" id="app" name="primer_apellido" placeholder="Tu Primer Apellido" value="" required="">
+              <input type="text" class="form-control" id="app" name="primer_apellido" placeholder="Tu Primer Apellido" value="{{auth()->user()->primer_apellido }}" required="">
               <span id="sapp" class="sapp">
                 @error('primer_apellido')
                 <br>
@@ -203,7 +207,7 @@
             </div>
                         <div class="col">
               <label for="lastName" class="form-label">Segundo Apellido<span class="text-muted"> (Opcional)</span></label>
-              <input type="text" class="form-control" id="apm" name="segundo_apellido" placeholder="Tu Segundo Apellido" value="" required="">
+              <input type="text" class="form-control" id="apm" name="segundo_apellido" placeholder="Tu Segundo Apellido" value="{{auth()->user()->segundo_apellido }}" required="">
               <span id="sapm" class="sapm">
                 @error('segundo_apellido')
                 <br>
@@ -218,7 +222,7 @@
 
             <div class="col-12">
               <label for="email" class="form-label" >Email </label>
-              <input type="email" class="form-control" id="mail" name="email" placeholder="correo@dominio.com">
+              <input type="email" class="form-control" id="mail" name="email" placeholder="correo@dominio.com" value="{{auth()->user()->email }}">
               <span id="smail" class="smail">
                 @error('email')
                 <br>
@@ -231,7 +235,7 @@
 
             <div class="col-md-6">
               <label for="address" class="form-label">Contraseña</label>
-              <input type="text" class="form-control" id="pass1" name="password" placeholder="contraseña" onkeyup="cantidad1(this);">
+              <input type="text" class="form-control" id="pass1" name="password" placeholder="contraseña" onkeyup="cantidad1(this);" >
               <span id="spass1" class="spass1">
               <b id="cantidad"></b>
               <b id="seguro"></b>
@@ -267,17 +271,20 @@
               </div>
 
             </div>
-
             <div class="col-md-6">
-              <label for="state" class="form-label">Perfil</label>
-              <select class="form-select" id="state" name="perfil" required="">
-                <option value="Cliente">Usuario</option>
-              </select>
-              @error('perfil')
-                <br>
-                <small style="color:#F00";>*{{$message}}</small>
-                <br>
-                @enderror
+                <label for="state" class="form-label">Perfil</label>
+                <select class="form-select" id="state" name="perfil" required="" >
+                  <option value="{{auth()->user()->perfil }}">{{auth()->user()->perfil }}</option>
+                </select>
+                @error('perfil')
+                  <br>
+                  <small style="color:#F00";>*{{$message}}</small>
+                  <br>
+                  @enderror
+
+              </div>
+
+
 
             </div>
 
@@ -286,7 +293,7 @@
                 <label for="example-date-input" class=" col-form-label">Fecha de nacimiento</label>
                 <div></div>
                 <div class="col-10">
-                  <input class="form-control" id="fn" name="fecha_nacimiento" type="date" value="" >
+                  <input class="form-control" id="fn" name="fecha_nacimiento" type="date" value="{{auth()->user()->fecha_nacimiento}}" >
                   <span id="sfecha" class="sfecha">
                 </div>
                 @error('fecha_nacimiento')
@@ -301,7 +308,7 @@
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit" id="bttnfin">Finalizar registro</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit" id="bttnfin">Actualizar</button>
         </form>
       </div>
     </div>
@@ -333,3 +340,7 @@
 
 </body>
 </html>
+
+
+
+@endsection

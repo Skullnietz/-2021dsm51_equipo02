@@ -75,6 +75,7 @@ class UsersController extends Controller
     public function show($id)
     {
 
+
     }
 
     /**
@@ -83,9 +84,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('editarusuario',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -95,19 +98,18 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user )
+    public function update(User $user )
     {
-        $request->validate([
-            'name' => 'required',
-            'primer_apellido' => 'required',
-            'email' => 'required',
-            'perfil' => 'required',
-            'fecha_nacimiento' => 'required',
-            'password' => 'required',
-
+        $user->update([
+            'name' => request('name'),
+            'segundo_apellido' => request('segundo_apellido'),
+            'primer_apellido' => request('primer_apellido'),
+            'email' => request('email'),
+            'sexo' => request('sexo'),
+            'fecha_nacimiento' => request('fecha_nacimiento'),
+            'perfil' => request('perfil'),
         ]);
-        $user->update($request->all());
-        return redirect()->route('users.index');
+        return redirect()->route('miusuario');
 
     }
 
