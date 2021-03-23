@@ -166,11 +166,20 @@
 
 <div class="container">
   <main>
+      @guest
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="Imagenes/logo.png" alt="" width="200" height="200" href="{{route('inicio')}}">
       <h2>Registro de usuario</h2>
       <p class="lead">Bienvenido al formulario de registro Huginn&Meninn, aqui podra crear su usuario para acceder a la plataforma.</p>
     </div>
+     @else
+
+     <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="Imagenes/logo.png" alt="" width="200" height="200" href="{{route('inicio')}}">
+        <h2>Agregar un usuario</h2>
+      </div>
+    @endguest
+
 
 
       <div class="col-lg-7 col-lg-8">

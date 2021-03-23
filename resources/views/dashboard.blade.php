@@ -2,29 +2,26 @@
 <!-- saved from url=(0053)https://getbootstrap.com/docs/5.0/examples/dashboard/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.80.0">
     <head>
         <title>@yield('title')</title>
     </head>
-
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB')}}" crossorigin="anonymous">
+    <link rel="canonical" href="{{asset('https://getbootstrap.com/docs/5.0/examples/dashboard/')}}">
 
 
 
     <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
 
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="Imagenes/logo.png" sizes="180x180">
-<link rel="icon" href="Imagenes/logo.png" sizes="32x32" type="image/png">
-<link rel="icon" href="Imagenes/logo.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="Imagenes/logo.png">
-<link rel="mask-icon" href="Imagenes/logo.png" color="#7952b3">
-<link rel="icon" href="Imagenes/logo.png">
+<link rel="apple-touch-icon" href="{{asset('Imagenes/logo.png')}}" sizes="180x180">
+<link rel="icon" href="{{asset('Imagenes/logo.png')}}" sizes="32x32" type="image/png">
+<link rel="icon" href="{{asset('Imagenes/logo.png')}}"  sizes="16x16" type="image/png">
+<link rel="manifest" href="{{asset('Imagenes/logo.png')}}" >
+<link rel="mask-icon" href="{{asset('Imagenes/logo.png')}}"  color="#7952b3">
+<link rel="icon" href="{{asset('Imagenes/logo.png')}}" >
 <meta name="theme-color" content="#7952b3">
 
 
@@ -46,13 +43,13 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="./dashboard.blade_files/dashboard.css" rel="stylesheet">
+    <link href="{{asset('./css/dashboard.css')}}"  rel="stylesheet">
   <style type="text/css">/* Chart.js */
 @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style></head>
   <body>
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <img src="Imagenes/logo.png" alt="logo" width="50px" height="40px">
+    <img src="{{asset('Imagenes/logo.png')}}" alt="logo" width="50px" height="40px">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{route('inicio')}}">Huginn&Meninn</a>
 
 
@@ -91,7 +88,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('productos')}}">
+            <a class="nav-link" href="{{route('productos.index')}}">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               Productos
             </a>
@@ -153,9 +150,7 @@
 </div>
 
 
-    <script src="./dashboard.blade_files/bootstrap.bundle.min.js.descarga" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-      <script src="./dashboard.blade_files/feather.min.js.descarga" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="./dashboard.blade_files/Chart.min.js.descarga" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="./dashboard.blade_files/dashboard.js.descarga"></script>
 
 
 </body></html>

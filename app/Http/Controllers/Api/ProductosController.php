@@ -25,6 +25,13 @@ class ProductosController extends Controller
         return response()->json($productos->toArray());
     }
 
+    public function index2()
+    {
+        $productos = Producto::all();
+        return view('productos',compact('productos'));
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +50,7 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-    
+
         $request->validate(Producto::reglas());
        return response()->json(Producto::create($request->all()));
     }
@@ -56,7 +63,8 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
-        //
+        $producto=Producto::findOrFail($id);
+        return view ("showproduct", compact("producto"));
     }
 
     /**

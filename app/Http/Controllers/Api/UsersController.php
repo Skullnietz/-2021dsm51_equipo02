@@ -19,9 +19,16 @@ class UsersController extends Controller
      */
     public function index()
     {
+        // $users = User::all();
+        // return view('userlist',compact('users'));
+        return new UserCollection(User::all());
+    }
+
+    public function index2()
+    {
         $users = User::all();
         return view('userlist',compact('users'));
-        //return new UserCollection(User::all());
+
     }
 
     /**
@@ -74,6 +81,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        $user=User::findOrFail($id);
+        return view ("showuser", compact("user"));
 
 
     }
@@ -89,6 +98,12 @@ class UsersController extends Controller
         return view('editarusuario',[
             'user' => $user
         ]);
+    }
+
+    public function edit2($id)
+    {
+        $user=User::findOrFail($id);
+        return view ("editarusuario2", compact("user"));
     }
 
     /**
@@ -110,6 +125,21 @@ class UsersController extends Controller
             'perfil' => request('perfil'),
         ]);
         return redirect()->route('miusuario');
+
+    }
+
+    public function update2(User $user )
+    {
+        $user->update([
+            'name' => request('name'),
+            'segundo_apellido' => request('segundo_apellido'),
+            'primer_apellido' => request('primer_apellido'),
+            'email' => request('email'),
+            'sexo' => request('sexo'),
+            'fecha_nacimiento' => request('fecha_nacimiento'),
+            'perfil' => request('perfil'),
+        ]);
+        return redirect()->route('users.index');
 
     }
 
