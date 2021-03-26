@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/providers/auth.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/usuarios-screen.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screen/estudios-medicos-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/productos_screen.dart';
 import 'package:provider/provider.dart';
 class HomeScreen extends StatefulWidget {
   @override
@@ -48,11 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               leading: Icon(
-                Icons.medical_services ,
+                Icons.shop_outlined,
               ),
-              title: Text('Estudios Medicos'),
+              title: Text('Productos'),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder:(context)=>EstudiosScreen()));
+                Navigator.push(context, MaterialPageRoute(builder:(context)=>ProductosScreen()));
               },
             ),
             ListTile(

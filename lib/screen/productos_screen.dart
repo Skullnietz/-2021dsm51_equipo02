@@ -2,47 +2,50 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/models/usuario.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screen/usuario_screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/models/producto.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/producto_screen.dart';
+
 import '../dio.dart';
 
-class UsuariosScreen extends StatefulWidget {
+class ProductosScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return UsuariosState();
+    return ProductosState();
 
   }
 }
 
 
-class UsuariosState extends State<UsuariosScreen> {
-   Future<List<Usuario>> getUsuarios() async {
-     Dio.Response response = await dio().get('users',
+class ProductosState extends State<ProductosScreen> {
+   Future<List<Producto>> getProductos() async {
+     Dio.Response response = await dio().get('productos',
         options: Dio.Options(
             headers: {'auth': true})); //http://10.0.2.2:8000/api/user/posts
             //print(json.decode(response.toString())['data']);
-    List usuarios = json.decode(response.toString());
-         List<Usuario> u =
-     usuarios.map((usuario) => Usuario.fromJson(usuario)).toList();
-    for(int idx = 0; idx < u.length; idx++){
-       print('${u[idx].id} = ${u[idx].nombre} ${u[idx].primerapellido} ${u[idx].segundoapellido} ' );
-       print('${u[idx].id} = ${u[idx].perfil} ' );
+    List productos = json.decode(response.toString());
+  //   return posts.map((post) => Producto.fromJson(post)).toList();
+  // }
+        List<Producto> p =
+      productos.map((producto) => Producto.fromJson(producto)).toList();
+   for(int pro = 0; pro < p.length; pro++){
+       print('${p[pro].id} = ${p[pro].producto} ${p[pro].img} ' );
+       
      }
-    return u;
+     return p;
 
      /*Dio.Response response = await dio().get(
-       'usuarios',
+       'estudios',
        options: Dio.Options(
          headers: {'auth': true}));
          print(response.toString());
 
-     List usuarios = json.decode(response.toString());
+     List estudios = json.decode(response.toString());
      
      
      
 */
      
-     //return usuarios.map((usuario) => Usuario.fromJson(usuario)).toList();
+     //return estudios.map((estudio) => estudio.fromJson(estudio)).toList();
      
 
    }
@@ -57,50 +60,55 @@ class UsuariosState extends State<UsuariosScreen> {
           color: Colors.black,
           //onPressed:
         ),
+        
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search, color:Colors.black),
            onPressed: null),
           IconButton(icon: Icon(Icons.add_shopping_cart, color:Colors.black),
            onPressed: null),
-           _agregarUsuario(),
-          _recargarUsuarios(),
+           _agregaProducto(),
+          _recargarProductos(),
         ],
-        title:Text('Usuarios'),
+        title:Text('Productos'),
          ),
          body: Center(
-           child: FutureBuilder<List<Usuario>>(
-             future: getUsuarios(),
+           child: FutureBuilder<List<Producto>>(
+             future: getProductos(),
              builder: (context, snapshot) {
-               if(snapshot.hasData){
+               if (snapshot.connectionState != ConnectionState.done) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasData) {
                  return ListView.builder(
                    itemCount: snapshot.data.length,
                    itemBuilder: (context, index){
-                     
-                     
                      var item = snapshot.data[index];
-
+                     print(item.toString());
                      return ListTile(
-                       title:Text(item.nombre+' '+item.primerapellido+ ' '+item.segundoapellido),
-                       subtitle:Text(item.perfil),
-                       leading: CircleAvatar(
-                         child: Text(item.nombre.substring(0,1)),
-                       ),
-                       trailing: Icon(Icons.arrow_forward_ios),
+                       title:Text(item.producto),
+                       subtitle:Text("\$ ${item.costo}",
+                       style: const TextStyle(fontSize:18, color: Colors.black)),
+                       trailing: Icon(Icons.edit),
+                       leading: Container(
+                         width:100,
+                         height:100,
+                         color: Colors.yellow,
+                         child:Image.network("http://10.0.2.2:8000/Imagenes/${item.img}", fit: BoxFit.cover,),
+                         
+                       ), //Image.asset("assets/images/${item.img}"),
                        onTap: () {
                           // log('Agregar al carrito: ' + item.id.toString());
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      UsuarioScreen(usuario: item)));
+                                      ProductoScreen(producto: item)));
                         },
                      );
-                   }
-                   );
+                   });
 
                }else if (snapshot.hasError){
                  log(snapshot.error.toString());
-                 return Text('Failed to load Usuarios');
+                 return Text('No se encontro productos');
                }
 
                return CircularProgressIndicator();
@@ -109,11 +117,7 @@ class UsuariosState extends State<UsuariosScreen> {
            ),
     );
   }
-
-Widget _agregarUsuario() {
-  DateTime now = new DateTime.now();
-  String convertedDateTime = "${now.year.toString()}/${now.month.toString().padLeft(2,'0')}/${now.day.toString().padLeft(2,'0')}";
-  
+   Widget _agregaProducto() {
     return TextButton(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -131,24 +135,22 @@ Widget _agregarUsuario() {
         ),
         onPressed: () {
           // print('agregar');
-          Usuario usuario = Usuario(
+          Producto producto = Producto(
               id: 0,
-              nombre: '',
-              primerapellido: '',
-              segundoapellido: '',
-              perfil: 'Cliente',
-              sexo: 'Masculino',   
-              fechanacimiento: convertedDateTime
-              );
+              categoria: 'Dispositivo',
+              costo: 0,
+              existencias: 0,
+              producto: '',
+              descripcion: '');
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => UsuarioScreen(usuario: usuario)));
+                  builder: (context) => ProductoScreen(producto: producto)));
         },
         child: Icon(Icons.add));
   }
 
-  Widget _recargarUsuarios() {
+  Widget _recargarProductos() {
     return TextButton(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -168,5 +170,32 @@ Widget _agregarUsuario() {
           setState(() {});
         },
         child: Icon(Icons.refresh));
+  }
+}
+
+//Necesitaremos un statefulWidget para las categorias de estudios_medicos
+class Categorias extends StatefulWidget {
+  @override
+  _CategoriasState createState() => _CategoriasState();
+  
+}
+
+
+
+class _CategoriasState extends State<Categorias> {
+  List<String> categorias = ["Componentes", "Dispositivos", "Paquetes" ];
+  // Por defecto Laboratorio, al abrir
+  int selectedIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 25,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: categorias.length,
+        itemBuilder:(context, index) => Text(categorias[index],),
+         ),
+      
+    );
   }
 }
