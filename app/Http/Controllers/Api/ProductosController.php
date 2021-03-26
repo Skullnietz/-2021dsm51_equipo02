@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 use App\Http\Resources\ProductosResource;
 use App\Http\Resources\ProductosCollection;
@@ -31,6 +32,12 @@ class ProductosController extends Controller
         return view('productos',compact('productos'));
 
     }
+    public function index3()
+    {
+        $productos = Producto::all();
+        return view('Inventario',compact('productos'));
+
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -53,6 +60,54 @@ class ProductosController extends Controller
 
         $request->validate(Producto::reglas());
        return response()->json(Producto::create($request->all()));
+    }
+    public function store2(Request $request)
+    {
+        $request->validate([
+            'img' => 'required|image|max:2048',
+            'producto' => 'required',
+            'costo' => 'required',
+            'categoria' => 'required',
+            'descripcion' => 'required',
+            'existencias' => 'required',
+        ]);
+        // Producto::create($request->only('producto', 'costo', 'categoria', 'descripcion','existencias', 'img'));
+        $imagen = $request-> file('img');
+        $nombre = time().'.'.$imagen->getClientOriginalExtension();
+        $destino = public_path('/Imagenes');
+        $request->img->move($destino, $nombre);
+        Producto::create([
+            'producto'=> $request->producto,
+             'costo'=> $request->costo,
+              'categoria'=> $request->categoria,
+               'descripcion'=> $request->descripcion,
+               'existencias'=> $request->existencias,
+                'img'=> $nombre,
+        ]);
+
+
+        return redirect()->route('productos.index2');
+
+
+    }
+
+    public function edit2($id)
+    {
+        $producto=Producto::findOrFail($id);
+        return view ("editarproducto", compact("producto"));
+    }
+
+    public function update2(Producto $producto )
+    {
+        $producto->update([
+            'producto' => request('producto'),
+            'costo' => request('costo'),
+            'existencias' => request('existencias'),
+            'categoria' => request('categoria'),
+            'descripcion' => request('descripcion'),
+        ]);
+        return redirect()->route('productos.index2');
+
     }
 
     /**
@@ -101,9 +156,10 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+        return redirect()->route('productos.index2');
     }
 
 }

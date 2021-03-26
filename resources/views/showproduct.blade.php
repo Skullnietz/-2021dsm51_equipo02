@@ -17,6 +17,7 @@ body{
 }
 
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @extends('dashboard')
 @section('title')
@@ -41,7 +42,7 @@ Detalles
                         <h3>{{$producto->producto}}</h3>
                     </div>
                     <div class="card-body">
-                        <h5>Descripcion del producto:</h5>
+                        <h5><i class="fa fa-info-circle"></i> Descripcion del producto</h5>
                         <div class="product-info panel">
 
                             <p>{{ $producto->descripcion}}</p>
@@ -57,7 +58,7 @@ Detalles
                     <div class="card-body">
                         <h3> <span class="bg-success">$ {{$producto->costo}} <small>MXN</small></span> </h3>
                         <p>
-                            <a class="btn btn-warning btn-block" href="#"> Comprar </a>
+                            <a class="btn btn-warning btn-block" href="#"><i class="fa fa-shopping-cart"></i> Comprar </a>
                         </p>
                     </div>
                     <div class="card-footer text-muted">

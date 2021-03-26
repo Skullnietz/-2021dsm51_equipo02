@@ -17,11 +17,17 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $users = User::all();
-        // return view('userlist',compact('users'));
-        return new UserCollection(User::all());
+        $users = User::select('id', 'name', 'primer_apellido', 'segundo_apellido', 'sexo', 'perfil', 'fecha_nacimiento')
+            ->when($request->perfil, function($query) use ($request) {
+                return $query->where('perfil', $request->perfil);
+            })
+            ->when($request->ids, function($query) use ($request) {
+                return $query->whereIn('id', $request->ids);
+            })
+            ->get();
+        return response()->json($users->toArray());
     }
 
     public function index2()
@@ -48,6 +54,12 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    {
+
+        $request->validate(User::reglas());
+       return response()->json(User::create($request->all()));
+    }
+    public function store2(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -113,7 +125,15 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user )
+    public function update(Request $request, $id)
+    {
+
+        $request->validate(User::reglas());
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return response()->json($user);
+    }
+    public function update2(User $user )
     {
         $user->update([
             'name' => request('name'),
@@ -128,7 +148,7 @@ class UsersController extends Controller
 
     }
 
-    public function update2(User $user )
+    public function update3(User $user )
     {
         $user->update([
             'name' => request('name'),

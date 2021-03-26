@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->enum('categoria',['Dispositivo','Componente','Paquete'])->comment('categoria');
             $table->string('img')->comment('imagen');
             $table->string('descripcion',400)->comment('descripcion');
+            $table->timestamps();
         });
     }
 

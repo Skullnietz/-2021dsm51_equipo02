@@ -51,4 +51,29 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+    public static function reglas() {
+        return [
+             'name' => 'required|string|max:50'
+             ,'primer_apellido' => 'required|string|max:40'
+             ,'segundo_apellido' => 'string|max:40'
+            , 'sexo' => 'required|string|max:20'
+            , 'perfil' => 'required|string|max:20'
+            , 'fecha_nacimiento' => 'required|date'
+        ];
+    }
+
+    public static function getOpcionesPerfil() {
+        return [
+            'Cliente' => 'Cliente'
+            , 'Administrador' => 'Administrador'
+            , 'Empleado' => 'Empleado'
+        ];
+    }
+    public static function getOpcionesSexo() {
+        return [
+            'Masculino' => 'Masculino'
+            , 'Femenino' => 'Femenino'
+            , 'Indefinido' => 'Indefinido'
+        ];
+    }
 }

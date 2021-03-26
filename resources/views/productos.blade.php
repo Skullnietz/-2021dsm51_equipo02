@@ -19,7 +19,7 @@ Productos
         @foreach($productos as $producto)
         <div class="col-4">
             {{-- click para ver --}}
-            <a href="#">
+            <a href="{{route('productos.show', $producto->id)}}">
           <div class="card mb-4 box-shadow">
             <img class="card-img-top" src="Imagenes/{{$producto->img}}" data-holder-rendered="true" width="200" height="200">
 
@@ -27,11 +27,11 @@ Productos
         <br>
             <center><h3>$ {{$producto->costo}} </h3><small>MXN</small></center>
             <div class="card-body">
-              <p class="card-text">{{$producto->producto}}</p>
+              <h4 class="card-text text-center">{{$producto->producto}}</h4>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{route('productos.show', $producto->id)}}">Ver</a>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Comprar</button>
+                <div class="btn-group col-md-12">
+                  <a type="button" class="btn btn-lg btn-secondary" href="{{route('productos.show', $producto->id)}}"><i class="fa fa-eye"></i>  Ver</a>
+                  <button type="button" class="btn btn-lg btn-outline-secondary"><i class="fa fa-shopping-cart"></i>  Comprar</button>
             </div>
           </div>
         </div>

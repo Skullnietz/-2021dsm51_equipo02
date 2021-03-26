@@ -53,12 +53,18 @@ Route::get('/user/{id}', function ($id) {
 });
 //----------------------------- Usuarios -------------------------------------------------
 Route::get('users/{user}/edit', [UsersController::class, 'edit2'])->name('users.edit');
-Route::post('users', [UsersController::class, 'store'])->name('users.store');
-Route::get('userlist', [UsersController::class, 'index2'])->name('users.index');
+Route::post('users', [UsersController::class, 'store2'])->name('users.store');
+Route::get('users', [UsersController::class, 'index2'])->name('users.index');
 Route::get('users/{user}', [UsersController::class, 'show'])->name('users.show');
-Route::patch('users/{user}', [UsersController::class, 'update'])->name('users.update');
-Route::patch('users/{user}/update', [UsersController::class, 'update2'])->name('users.update2');
+Route::patch('users/{user}', [UsersController::class, 'update2'])->name('users.update');
+Route::patch('users/{user}/update', [UsersController::class, 'update3'])->name('users.update2');
 Route::delete('users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 //----------------------------- Productos -------------------------------------------------
 Route::get('productos', [ProductosController::class, 'index2'])->name('productos.index');
+Route::get('Inventario', [ProductosController::class, 'index3'])->name('productos.index2');
 Route::get('productos/{producto}', [ProductosController::class, 'show'])->name('productos.show');
+Route::post('productos', [ProductosController::class, 'store2'])->name('productos.store');
+Route::name('createproduct')->get('/createproduct', function () {return view('createproduct');});
+Route::get('productos/{producto}/edit', [ProductosController::class, 'edit2'])->name('productos.edit');
+Route::patch('productos/{producto}/update', [ProductosController::class, 'update2'])->name('productos.update2');
+Route::delete('productos/{producto}', [ProductosController::class, 'destroy'])->name('productos.destroy');

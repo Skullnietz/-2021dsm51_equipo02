@@ -33,7 +33,7 @@ Route::delete('/auth/token', [TokenController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::apiResource('usuarios', UsersController::class)->except(['create', 'edit']);
+    Route::apiResource('users', UsersController::class)->except(['create', 'edit']);
     Route::apiResource('productos', ProductosController::class)->except(['create', 'edit']);
 
 
