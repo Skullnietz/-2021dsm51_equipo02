@@ -8,6 +8,8 @@ use Validator;
 use App\Http\Resources\ProductosResource;
 use App\Http\Resources\ProductosCollection;
 use App\Models\Producto;
+use App\Models\Dispositivo;
+
 
 
 
@@ -28,14 +30,20 @@ class ProductosController extends Controller
 
     public function index2()
     {
+        $devices = Dispositivo::all();
+        $paquetes = Producto::where('categoria','Paquete')->get();
+        $dispositivos = Producto::where('categoria','Dispositivo')->get();
+        $componentes = Producto::where('categoria','Componente')->get();
         $productos = Producto::all();
-        return view('productos',compact('productos'));
+        //return dd($componentes);
+        return view('productos',compact('productos','componentes','dispositivos','paquetes','devices'));
 
     }
     public function index3()
     {
+        $devices = Dispositivo::all();
         $productos = Producto::all();
-        return view('Inventario',compact('productos'));
+        return view('Inventario',compact('productos','devices'));
 
     }
 
@@ -61,8 +69,9 @@ class ProductosController extends Controller
         $request->validate(Producto::reglas());
        return response()->json(Producto::create($request->all()));
     }
-    public function store2(Request $request)
+    public function store2(Request $request, Dispositivo $devices)
     {
+
         $request->validate([
             'img' => 'required|image|max:2048',
             'producto' => 'required',
@@ -93,18 +102,32 @@ class ProductosController extends Controller
 
     public function edit2($id)
     {
+        $devices = Dispositivo::all();
         $producto=Producto::findOrFail($id);
-        return view ("editarproducto", compact("producto"));
+        return view ("editarproducto", compact("producto","devices"));
     }
 
-    public function update2(Producto $producto )
+    public function update2(Producto $producto, Request $request)
     {
+        $request->validate([
+            'img' => 'required|image|max:2048',
+            'producto' => 'required',
+            'costo' => 'required',
+            'categoria' => 'required',
+            'descripcion' => 'required',
+            'existencias' => 'required',
+        ]);
+        $imagen = $request-> file('img');
+        $nombre = time().'.'.$imagen->getClientOriginalExtension();
+        $destino = public_path('/Imagenes');
+        $request->img->move($destino, $nombre);
         $producto->update([
             'producto' => request('producto'),
             'costo' => request('costo'),
             'existencias' => request('existencias'),
             'categoria' => request('categoria'),
             'descripcion' => request('descripcion'),
+            'img' => $nombre,
         ]);
         return redirect()->route('productos.index2');
 
@@ -118,8 +141,9 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
+        $devices = Dispositivo::all();
         $producto=Producto::findOrFail($id);
-        return view ("showproduct", compact("producto"));
+        return view ("showproduct", compact("producto","devices"));
     }
 
     /**

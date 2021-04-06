@@ -239,7 +239,9 @@ Editar usuario
                 <label for="state" class="form-label">Perfil</label>
                 <select class="form-select" id="state" name="perfil" required="" >
                   <option value="{{$user->perfil }}">{{$user->perfil }}</option>
+                  @if (Auth::user()->perfil == 'Administrador')
                   <option value="Administrador">Administrador</option>
+                  @endif
                   <option value="Empleado">Empleado</option>
                   <option value="Cliente">Cliente</option>
                 </select>

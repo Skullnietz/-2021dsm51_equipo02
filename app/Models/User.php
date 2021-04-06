@@ -76,4 +76,8 @@ class User extends Authenticatable
             , 'Indefinido' => 'Indefinido'
         ];
     }
+    public function direccions()
+    {
+        return $this->hasMany(Direccion::class);
+    }
 }

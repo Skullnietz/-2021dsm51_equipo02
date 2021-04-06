@@ -57,12 +57,17 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Inicio</a>
           </li>
+          @auth
           <li class="nav-item">
-            <a class="nav-link" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Productos</a>
+
+              <a class="nav-link" href="{{route('productos.index')}}">Productos</a>
+
           </li>
+          @else
           <li class="nav-item">
-            <a class="nav-link disabled" href="https://getbootstrap.com/docs/5.0/examples/carousel/#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link disabled" href="{{route('productos.index')}}" tabindex="-1" aria-disabled="true">Productos</a>
           </li>
+          @endauth
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -117,7 +122,9 @@
           <div class="carousel-caption text-end">
             <h1 style="color:black;"></h1>
             <h3 style="color:black;"> </p>
-            <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Ver Productos</a></h3>
+                @auth
+            <p><a class="btn btn-lg btn-primary" href="{{route("productos.index")}}">Ver Productos</a></h3>
+                @endauth
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
 use App\Models\User;
+use App\Models\Dispositivo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -32,8 +33,9 @@ class UsersController extends Controller
 
     public function index2()
     {
+        $devices = Dispositivo::all();
         $users = User::all();
-        return view('userlist',compact('users'));
+        return view('userlist',compact('users','devices'));
 
     }
 
@@ -61,6 +63,7 @@ class UsersController extends Controller
     }
     public function store2(Request $request)
     {
+
         $request->validate([
             'name' => 'required',
             'primer_apellido' => 'required',
@@ -93,8 +96,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        $devices = Dispositivo::all();
         $user=User::findOrFail($id);
-        return view ("showuser", compact("user"));
+        return view ("showuser", compact("user","devices"));
 
 
     }
@@ -114,8 +118,9 @@ class UsersController extends Controller
 
     public function edit2($id)
     {
+        $devices = Dispositivo::all();
         $user=User::findOrFail($id);
-        return view ("editarusuario2", compact("user"));
+        return view ("editarusuario2", compact("user","devices"));
     }
 
     /**

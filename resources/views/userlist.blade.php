@@ -11,10 +11,12 @@ Usuarios
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
       </div>
+      @if (Auth::user()->perfil == 'Administrador')
       <a href="{{route('registro')}}" type="button" class="btn btn-sm btn-outline-secondary ">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
         Agregar Usuario
       </a>
+      @endif
     </div>
   </div>
 
@@ -29,8 +31,10 @@ Usuarios
           <th>E-mail</th>
           <th>Sexo</th>
           <th>Fecha Nacimiento</th>
+          @if (Auth::user()->perfil == 'Administrador')
           <th>Eliminar</th>
           <th>Editar</th>
+          @endif
         </tr>
       </thead>
       <tbody>
@@ -44,6 +48,7 @@ Usuarios
           <td>{{$user->email}}</td>
           <td>{{$user->sexo}}</td>
           <td>{{$user->fecha_nacimiento}}</td>
+          @if (Auth::user()->perfil == 'Administrador')
           <form action="{{route('users.destroy',$user)}}" method="post">
             @csrf
             @method('delete')
@@ -54,6 +59,7 @@ Usuarios
           <td>
               <a  class="btn btn-round" href="{{route('users.edit',$user)}}"><i class="fas fa-edit"></i></a>
           </td>
+          @endif
 
 
         </tr>

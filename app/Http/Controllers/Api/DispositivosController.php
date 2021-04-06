@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Api;
+use App\Models\Dispositivo;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class DispositivosController extends Controller
@@ -13,6 +14,9 @@ class DispositivosController extends Controller
      */
     public function index()
     {
+        $devices = Dispositivo::all();
+        //return $dispositivos;
+        return view('dashboard',compact('devices'));
 
     }
 
@@ -45,7 +49,9 @@ class DispositivosController extends Controller
      */
     public function show($id)
     {
-        //
+        $devices = Dispositivo::all();
+        $device=Dispositivo::findOrFail($id);
+        return view ("showdispositivo", compact("device", "devices"));
     }
 
     /**
@@ -56,7 +62,17 @@ class DispositivosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $devices = Dispositivo::all();
+        $device=Dispositivo::findOrFail($id);
+        $device->update([
+            'Estado' => request('Estado'),
+        ]);
+        return view ("showdispositivo", compact("device", "devices"));
+    }
+    public function tabla()
+    {
+        $devices = Dispositivo::all();
+        return view ("Dispositivos", compact("devices"));
     }
 
     /**
@@ -66,20 +82,41 @@ class DispositivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function ON(Dispositivo $device, $id )
     {
-        //
+        // $devices = Dispositivo::all();
+        // $device=Dispositivo::findOrFail($id);
+        $device->update([
+            'Estado' => 'ON',
+        ]);
+        return view ("showdispositivo", compact("device", "devices"));
+
+
+    }
+    public function OFF(Dispositivo $device, $id )
+    {
+        // $devices = Dispositivo::all();
+        // $device=Dispositivo::findOrFail($id);
+        $device->update([
+            'Estado' => 'OFF',
+        ]);
+        return view ("showdispositivo", compact("device", "devices"));
+
+    }
+    public function update(Dispositivo $device, Request $request, $id)
+    {
+        $device=Dispositivo::findOrFail($id);
+        $request->validate([
+            'Estado' => 'required',
+            'user_id' => 'required',
+        ]);
+        $device->update([
+            'Estado' => request('Estado'),
+            'user_id' => request('user_id'),
+        ]);
+        return redirect()->back();
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
 

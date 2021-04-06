@@ -32,7 +32,7 @@ Detalles
     <div class="row">
         <div class="col-md-6">
             <div class="product-block">
-                <img class= "rounded "src="{{ asset('Imagenes').'/'.$producto->img}}" alt="imgproduct">
+                <img class= "rounded " width="500" src="{{ asset('Imagenes').'/'.$producto->img}}" alt="imgproduct">
             </div>
         </div>
         <div class="col-md-6">
@@ -62,7 +62,7 @@ Detalles
                         </p>
                     </div>
                     <div class="card-footer text-muted">
-                        <small>{{$producto->updated_at}}</small>
+                        <small>Actualizado: {{$producto->updated_at}}</small>
                     </div>
                   </div>
             </div>
@@ -71,8 +71,8 @@ Detalles
     </div>
 
 
-<br>
-    <p><a class="btn btn-lg btn-primary" href="{{route('productos.index')}}"> <i class="fa fa-chevron-circle-left"></i> Regresar </a></p>
+    <div class="" ><p><a class="btn btn-lg btn-primary" href="{{route('productos.index')}}"> <i class="fa fa-chevron-circle-left"></i> Regresar </a></p></div>
+
 </div>
 
 

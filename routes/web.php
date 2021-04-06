@@ -1,12 +1,17 @@
 <?php
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\ProductosController;
+use App\Http\Controllers\Api\DireccionsController;
+use App\Http\Controllers\Api\StatesController;
+use App\Http\Controllers\Api\TownsController;
+use App\Http\Controllers\Api\DispositivosController;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\ProductosResource;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Dispositivo;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +29,17 @@ Route::get('/', function () {
 });
 
 Route::name('inicio')->get('/inicio', function () {return view('welcome');});
+Route::name('arduino1')->get('/arduino1', function () {return view('arduino1');});
+Route::name('arduino2')->get('/arduino2', function () {return view('arduino2');});
+Route::name('arduino3')->get('/arduino3', function () {return view('arduino3');});
 Route::name('Iniciosesion')->get('/Iniciosesion', function () {return view('Iniciosesion');})->middleware('guest');
-Route::name('miusuario')->get('/miusuario', function () {return view('miusuario');});
+// Route::name('miusuario')->get('/miusuario', function () { $devices = Dispositivo::all(); return view('miusuario', compact("devices"));});
 Route::name('Inventario')->get('/Inventario', function () {return view('Inventario');});
-Route::name('editarusu')->get('/editarusuario', function () {return view('editarusuario');});
+Route::name('editarusu')->get('/editarusuario', function () {$devices = Dispositivo::all(); return view('editarusuario', compact("devices"));});
 Route::name('editarusu2')->get('/editarusuario2', function () {return view('editarusuario2');});
-Route::name('carrito')->get('/carrito', function () {return view('carrito');});
+Route::name('carrito')->get('/carrito', function () {$devices = Dispositivo::all(); return view('carrito', compact("devices"));});
 Route::name('registro')->get('/registro', function () {return view('registro');});
-Route::name('pedidos')->get('/pedidos', function () {return view('pedidos');});
+Route::name('pedidos')->get('/pedidos', function () {$devices = Dispositivo::all(); return view('pedidos', compact("devices"));});
 //-----------------------------AUTH-------------------------------
 Route::post('Iniciosesion', function (){
     $credentials = request()->only('email','password');
@@ -68,3 +76,18 @@ Route::name('createproduct')->get('/createproduct', function () {return view('cr
 Route::get('productos/{producto}/edit', [ProductosController::class, 'edit2'])->name('productos.edit');
 Route::patch('productos/{producto}/update', [ProductosController::class, 'update2'])->name('productos.update2');
 Route::delete('productos/{producto}', [ProductosController::class, 'destroy'])->name('productos.destroy');
+//----------------------------- Direcciones -------------------------------------------------
+Route::get('miusuario', [DireccionsController::class, 'index'])->name('miusuario');
+Route::post('direccions', [DireccionsController::class, 'store'])->name('direccions.store');
+Route::get('createdireccion', [StatesController::class, 'index'])->name('states.index');
+Route::get('/states/{id}/towns', [TownsController::class, 'byState']);
+Route::patch('direccions/{direccion}/update', [DireccionController::class, 'update'])->name('direccion.update');
+// Route::get('direccions/{producto}/edit', [ProductosController::class, 'edit2'])->name('productos.edit');
+// Route::patch('direccions/{producto}/update', [ProductosController::class, 'update2'])->name('productos.update2');
+// Route::delete('direccions/{producto}', [ProductosController::class, 'destroy'])->name('productos.destroy');
+//----------------------------- Dispositvo -------------------------------------------------
+Route::get('devices/{device}', [DispositivosController::class, 'show'])->name('dispositivo.show');
+ Route::get('devices', [DispositivosController::class, 'index'])->name('dispositivos.index')->middleware('auth');;
+Route::get('dispositivo/{dispositivo}/edit', [DispositivosController::class, 'edit'])->name('dispositivo.edit');
+Route::get('dispositivos/tabla', [DispositivosController::class, 'tabla'])->name('dispositivos.tabla');
+Route::put('dispositivos/{dispositivo}/update', [DispositivosController::class, 'update'])->name('dispositivo.update');

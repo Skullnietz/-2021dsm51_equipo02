@@ -15,6 +15,12 @@ class CreateDispositivosTable extends Migration
     {
         Schema::create('dispositivos', function (Blueprint $table) {
             $table->id();
+            $table->string('img', 25)->comment('Imagen');
+            $table->string('Dispositivo', 25)->comment('Nombre de dispositivo');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->enum('foco',['SI','NO'])->comment('¿Es foco?');
+            $table->enum('Estado',['ON','OFF'])->comment('Estado del dispositivo');
             $table->timestamps();
         });
     }

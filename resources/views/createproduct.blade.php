@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Registro Usuario</title>
+    <title>Creacion de Producto</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
 
@@ -51,11 +51,12 @@ $(document).ready(function(){
             const $input2 = document.querySelector('#costo');
             const $input3 = document.querySelector('#existencias');
             const patron = /[a-zA-Zñ ]+/;
+            const patron2 = /[a-zA-Zñ 0-9-]+/;
             const patron1 = /[0-9.]+/;
 
             $input1.addEventListener("keydown", event => {
                 console.log(event.key);
-                if(patron.test(event.key)){
+                if(patron2.test(event.key)){
                     $("#producto").css({ "border": "1px solid #0C0"});
                 }
                 else{

@@ -266,6 +266,29 @@ body {
                     <li style="color:#00F";>{{auth()->user()->name }} {{auth()->user()->primer_apellido }} {{auth()->user()->segundo_apellido }}</li>
                     <li><i class="icono fas fa-edit"></i> Sexo:</li>
                     <li style="color:#00F";>{{auth()->user()->sexo }}</li>
+                    <li><i class="icono fas fa-home"></i>Direcciones:</li>
+
+
+                    @foreach ($direccions as $direccion)
+                    <div class="card">
+                    <tr>
+                        <div class="card-header">
+                        <td><a style="color:#00F";>  {{$direccion->id}}° Direccion</a></td>
+
+                    </div>
+                        <div class="card-body">
+                        <td>{{$direccion->Calle}},</td>
+                        <td>{{$direccion->CP}},</td>
+                        <td>{{$direccion->Indicaciones}}</td>
+                    </div>
+                    </tr>
+                </div>
+                    @endforeach
+
+
+
+                    <li><a class="w-100 btn btn-secondary " href="{{route('states.index')}}" ><i class="fas fa-plus"></i>  Agregar direccion</a></li>
+
                 </ul>
                 <ul class="lista-datos">
                     <li><i class="icono fas fa-clipboard"></i> Estatus:</li>

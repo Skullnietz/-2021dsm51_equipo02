@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class especialidades_medicas extends Model
+class Town extends Model
 {
-    use HasFactory;
+    protected $table = 'towns';
+    protected $fillable = ['name','state_id'];
 }

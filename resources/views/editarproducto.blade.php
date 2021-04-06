@@ -1,6 +1,6 @@
 @extends('dashboard')
 @section('title')
-Editar usuario
+Editar producto
 @endsection
 @section('content')
 <!DOCTYPE html>
@@ -181,7 +181,7 @@ $(document).ready(function(){
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit" id="bttnfin">Crear producto</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit" id="bttnfin">Actualizar producto</button>
         </form>
       </div>
     </div>
